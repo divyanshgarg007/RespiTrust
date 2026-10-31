@@ -12,3 +12,9 @@ venv/
 *.h5
 *.onnx
 *.zip
+
+venv312/
+backend/venv312/
+venv*/
+backend/venv*/
+site-packages/
