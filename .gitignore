@@ -1,0 +1,14 @@
+respitrust.db
+*.db
+backend/history_images/
+history_images/
+__pycache__/
+*.pyc
+venv/
+.venv/
+.env
+*.pth
+*.pt
+*.h5
+*.onnx
+*.zip

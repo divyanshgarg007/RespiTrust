@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RespiTrust Admin Portal</title>
+<link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+<div id="loginView" class="login-wrap">
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <h1>RespiTrust Admin</h1>
+    <p>Authorised team members only.</p>
+    <label class="f" for="em">Email</label>
+    <input class="in" id="em" type="email" autocomplete="username" required>
+    <label class="f" for="pw">Password</label>
+    <input class="in" id="pw" type="password" autocomplete="current-password" required>
+    <div class="err" id="loginErr"></div>
+    <button class="btn solid" style="width:100%;margin-top:6px" type="submit">Log in</button>
+  </form>
+</div>
+
+<div id="appView" class="hidden">
+  <div class="topbar">
+    <b>RespiTrust</b><span class="tag">Admin</span>
+    <span class="sp"></span>
+    <span class="who" id="who"></span>
+    <button class="btn small" id="logoutBtn" type="button">Log out</button>
+  </div>
+  <div class="admin-main">
+    <div class="tabs" id="tabs">
+      <button class="tab on" data-t="overview" type="button">Overview</button>
+      <button class="tab" data-t="conv" type="button">Conversations</button>
+      <button class="tab" data-t="cases" type="button">Cases</button>
+      <button class="tab" data-t="users" type="button">Users</button>
+      <button class="tab" data-t="doctors" type="button">Doctors</button>
+      <button class="tab" data-t="chat" type="button">Chatbot logs</button>
+      <button class="tab" data-t="audit" type="button">Activity</button>
+      <button class="tab" data-t="account" type="button">My account</button>
+    </div>
+    <div id="view"></div>
+  </div>
+</div>
+
+<script src="js/portal-common.js"></script>
+<script src="js/admin.js"></script>
+<script src="js/robot.js"></script>
+</body>
+</html>

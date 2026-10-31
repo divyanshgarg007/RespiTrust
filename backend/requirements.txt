@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+python-multipart
+torch
+torchvision
+opencv-python-headless
+numpy
+Pillow
+lime
+scikit-image
+scikit-learn
+matplotlib
+seaborn
+pandas

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RespiTrust Doctor Portal</title>
+<link rel="stylesheet" href="css/portal.css">
+</head>
+<body>
+
+<div id="loginView" class="login-wrap">
+  <form class="login-card" id="loginForm" autocomplete="on">
+    <h1>RespiTrust Doctor Portal</h1>
+    <p>Sign in with the email and password given to you by the RespiTrust admin.</p>
+    <label class="f" for="em">Email</label>
+    <input class="in" id="em" type="email" autocomplete="username" required>
+    <label class="f" for="pw">Password</label>
+    <input class="in" id="pw" type="password" autocomplete="current-password" required>
+    <div class="err" id="loginErr"></div>
+    <button class="btn solid" style="width:100%;margin-top:6px" type="submit">Log in</button>
+    <p style="margin:14px 0 0;font-size:12.5px"><a href="index.html">Patient portal</a></p>
+  </form>
+</div>
+
+<div id="appView" class="hidden">
+  <div class="topbar">
+    <b>RespiTrust</b><span class="tag">Doctor portal</span>
+    <span class="sp"></span>
+    <span class="who" id="who"></span>
+    <button class="btn small" id="refreshBtn" type="button">Refresh</button>
+    <button class="btn small" id="logoutBtn" type="button">Log out</button>
+  </div>
+  <div class="layout">
+    <div class="panel">
+      <h2>Cases</h2>
+      <div class="tabs" id="tabs">
+        <button class="tab on" data-f="open" type="button">New</button>
+        <button class="tab" data-f="mine" type="button">My cases</button>
+        <button class="tab" data-f="reviewed" type="button">Reviewed</button>
+      </div>
+      <div class="list" id="list"></div>
+    </div>
+    <div class="panel" id="detail"><div class="empty">Select a case on the left to see the X-ray and details.</div></div>
+  </div>
+</div>
+
+<script src="js/portal-common.js"></script>
+<script src="js/doctor.js"></script>
+<script src="js/robot.js"></script>
+</body>
+</html>

@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RespiTrust — AI-Powered Pneumonia Detection</title>
+<link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/extras.css">
+</head>
+<body>
+
+
+<div id="heroScreen">
+
+  <nav class="landing-nav">
+    <div class="container nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.jpg" alt="RespiTrust logo">
+        <span>RespiTrust</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" class="nav-pill active">Home</a>
+        <a href="#" id="heroNavAboutBtn">About</a>
+        <a href="#" id="heroNavServicesBtn">FAQs</a>
+        <a href="#" id="heroNavFeaturesBtn">Features</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-dots"></div>
+    <div class="hero-glow hero-glow-a"></div>
+    <div class="hero-glow hero-glow-b"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="hero-eyebrow">AI-assisted chest X-ray screening</span>
+        <h1 class="hero-headline"><span class="reveal-line" style="--d:0s">Explainable AI for</span><br><span class="reveal-line shimmer-text" style="--d:.15s">Pneumonia Detection</span></h1>
+        <p class="reveal-line" style="--d:.3s">Upload a chest X-ray and get a bacterial / viral / normal prediction in seconds — with Grad-CAM, saliency and LIME explainability so you can see exactly why.</p>
+        <div class="hero-trust-row reveal-line" style="--d:.4s">
+          <span class="hero-chip chip-teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>
+            Explainable by design
+          </span>
+          <span class="hero-chip chip-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            Results in seconds
+          </span>
+          <span class="hero-chip chip-violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+            Grad-CAM · Saliency · LIME
+          </span>
+        </div>
+        <div class="hero-cta-col reveal-line" style="--d:.55s">
+          <button id="heroLearnMoreBtn" type="button" class="btn-ghost-light">See how it works</button>
+          <button id="landingGetStartedBtn" type="button" class="btn-pill-bright">Get Started</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-visual-glow"></div>
+        <div class="hero-stage animate-float">
+          <img class="stage-bg" src="assets/hero-bg.png" alt="">
+          <img class="emerge-part" src="assets/badge-xray.png" alt="Chest X-ray with Grad-CAM heatmap overlay"
+               style="left:38.3%;top:23.0%;width:28.2%;--dx:0px;--dy:0px;--d:.15s">
+          <img class="emerge-part" src="assets/badge-ai.png" alt="AI processing icon"
+               style="left:59.4%;top:16.9%;width:8.1%;--dx:24px;--dy:-28px;--d:.3s">
+          <img class="emerge-part" src="assets/badge-pred.png" alt="Prediction card: Bacterial 87%, Viral 8%, Normal 5%"
+               style="left:16.3%;top:37.3%;width:20.9%;--dx:-46px;--dy:8px;--d:.4s">
+          <img class="emerge-part" src="assets/badge-gradcam.png" alt="Grad-CAM explainability thumbnail"
+               style="left:72.4%;top:23.6%;width:10.5%;--dx:42px;--dy:-14px;--d:.5s">
+          <img class="emerge-part" src="assets/badge-saliency.png" alt="Saliency map explainability thumbnail"
+               style="left:72.4%;top:39.4%;width:10.5%;--dx:46px;--dy:0px;--d:.6s">
+          <img class="emerge-part" src="assets/badge-lime.png" alt="LIME explainability thumbnail"
+               style="left:72.4%;top:55.7%;width:10.5%;--dx:42px;--dy:14px;--d:.7s">
+          <img class="emerge-part" src="assets/badge-thumbl.png" alt="Segmentation thumbnail"
+               style="left:49.6%;top:73.6%;width:8.0%;--dx:-14px;--dy:34px;--d:.8s">
+          <img class="emerge-part" src="assets/badge-thumbr.png" alt="Segmentation thumbnail"
+               style="left:57.5%;top:72.5%;width:9.0%;--dx:18px;--dy:34px;--d:.9s">
+        </div>
+      </div>
+    </div>
+  </header>
+
+</div>
+
+
+<div id="infoScreen" style="display:none;">
+
+  <nav class="landing-nav">
+    <div class="container nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.jpg" alt="RespiTrust logo">
+        <span>RespiTrust</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" id="infoNavHomeBtn">Home</a>
+        <a href="#about" class="nav-pill active">About</a>
+        <a href="#services">FAQs</a>
+        <a href="#features">Features</a>
+        <button type="button" id="infoNavAnalyzeBtn" class="nav-cta-btn">Analyze an X-ray</button>
+      </div>
+    </div>
+  </nav>
+
+  <section id="about" class="landing-section">
+    <div class="container">
+      <p class="eyebrow-plain">About RespiTrust</p>
+      <h2 class="section-title">Built for trust, not just accuracy</h2>
+      <div class="about-grid">
+        <div>
+          <p class="about-lead">RespiTrust is an AI-assisted chest X-ray screening tool. It classifies scans as Normal, Bacterial pneumonia or Viral pneumonia, and shows the exact lung regions that drove the prediction — so the result is something a clinician can actually check, not a black box.</p>
+          <ul class="check-list">
+            <li>Three-class classification in a few seconds</li>
+            <li>Region-of-concern highlighting on every scan</li>
+            <li>Full test history saved to your account</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <div class="about-card-row"><span>Speed</span><strong>Results in seconds</strong></div>
+          <div class="about-card-row"><span>Coverage</span><strong>Normal · Bacterial · Viral</strong></div>
+          <div class="about-card-row"><span>Transparency</span><strong>Visual explanation on every scan</strong></div>
+          <div class="about-card-row"><span>Privacy</span><strong>Your scans, your account only</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="landing-section alt">
+    <div class="container">
+      <p class="eyebrow-plain">FAQs</p>
+      <h2 class="section-title">Frequently asked questions</h2>
+      <div class="accordion" id="landingAccordion">
+        <div class="accordion-item open">
+          <button class="accordion-head" type="button">
+            <span>How does RespiTrust work?</span><span class="accordion-caret">▾</span>
+          </button>
+          <div class="accordion-body">
+            <p>Upload a chest X-ray and RespiTrust classifies it as Normal, Bacterial pneumonia or Viral pneumonia in a few seconds, and highlights the lung regions that most influenced that result.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-head" type="button">
+            <span>Who can use this platform?</span><span class="accordion-caret">▾</span>
+          </button>
+          <div class="accordion-body">
+            <p>Built for clinicians and students who want a fast, explainable second read on a chest X-ray. It's a screening aid, not a replacement for a radiologist's diagnosis.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-head" type="button">
+            <span>Is my data kept anywhere?</span><span class="accordion-caret">▾</span>
+          </button>
+          <div class="accordion-body">
+            <p>Once you log in, every scan you analyze is saved to your account's history so you can track a patient's results over time and see how their condition is trending.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-head" type="button">
+            <span>Does this replace a doctor's diagnosis?</span><span class="accordion-caret">▾</span>
+          </button>
+          <div class="accordion-body">
+            <p>No. RespiTrust is a screening aid meant to support a faster, more transparent first read — every result should still be confirmed by a qualified doctor or radiologist.</p>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <button class="accordion-head" type="button">
+            <span>What image formats can I upload?</span><span class="accordion-caret">▾</span>
+          </button>
+          <div class="accordion-body">
+            <p>RespiTrust accepts standard chest X-ray images in JPG or PNG format. Just upload the scan and you'll get your result in seconds.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="landing-section">
+    <div class="container">
+      <p class="eyebrow-plain">Features</p>
+      <h2 class="section-title">Everything you need for a reliable read</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></div>
+          <h3>Explainable by design</h3>
+          <p>Grad-CAM, saliency maps and LIME on every prediction, not just a confidence number.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+          <h3>Results in seconds</h3>
+          <p>Upload a scan and get a full breakdown — prediction, confidence and region of concern — almost instantly.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg></div>
+          <h3>OTP-secured login</h3>
+          <p>Passwordless mobile OTP login with instant verification — no passwords to manage or leak.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg></div>
+          <h3>Trend-aware history</h3>
+          <p>Every scan is saved to your account, and RespiTrust flags whether a patient looks like they're improving or worsening.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">RespiTrust</div>
+        <p>Explainable AI for pneumonia detection — a screening aid for chest X-rays, built with transparency at the core.</p>
+      </div>
+      <div>
+        <h4>Quick links</h4>
+        <a href="#" id="footerHomeBtn">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">FAQs</a>
+        <a href="#features">Features</a>
+      </div>
+      <div>
+        <h4>Get started</h4>
+        <p class="footer-note">Academic project — not a certified medical diagnostic tool.</p>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+
+<div id="loginScreen" style="display:none;">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo"><img src="assets/logo.jpg" alt="RespiTrust logo"></div>
+      <h2>Log in to RespiTrust</h2>
+      <p class="auth-sub">Enter your mobile number — we'll send a one-time code to verify it's you.</p>
+
+      <div id="loginStepEmail">
+        <label for="loginPhone">Mobile number</label>
+        <input type="tel" id="loginPhone" placeholder="10-digit mobile number" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" autocomplete="tel-national">
+        <button id="sendOtpBtn" type="button" class="btn-block">Send OTP</button>
+      </div>
+
+      <div id="loginStepOtp" style="display:none;">
+        <p class="otp-target">Code sent to <strong id="otpPhoneLabel"></strong></p>
+        <div id="demoOtpNote" class="demo-otp-note"></div>
+        <label for="loginOtp">6-digit code</label>
+        <input type="text" id="loginOtp" maxlength="6" inputmode="numeric" placeholder="••••••">
+        <button id="verifyOtpBtn" type="button" class="btn-block">Verify &amp; log in</button>
+        <button id="resendOtpBtn" type="button" class="btn-link">Change number / resend code</button>
+      </div>
+
+      <p id="authError" class="auth-error"></p>
+    </div>
+  </div>
+</div>
+
+
+<div id="appScreen" style="display:none;">
+
+<nav class="landing-nav">
+  <div class="container nav-inner">
+    <div class="nav-brand">
+      <img src="assets/logo.jpg" alt="RespiTrust logo">
+      <span>RespiTrust</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" id="navHomeBtn" class="nav-pill active">Upload</a>
+      <a href="#" id="navHistoryBtn">History</a>
+      <span class="app-nav-email" id="navUserPhone"></span>
+      <button id="logoutBtn" type="button" class="nav-cta-btn">Log out</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero app-hero">
+  <div class="hero-dots"></div>
+  <div class="hero-glow hero-glow-a"></div>
+  <div class="hero-glow hero-glow-b"></div>
+  <div class="container app-hero-inner">
+    <span class="hero-eyebrow">AI-assisted chest X-ray screening</span>
+    <h1>Upload a chest X-ray</h1>
+    <p>Get a Normal / Bacterial / Viral prediction in seconds — with Grad-CAM, saliency and LIME so you can see exactly why.</p>
+    <div class="hero-trust-row">
+      <span class="hero-chip chip-teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6z"/></svg>
+        Explainable by design
+      </span>
+      <span class="hero-chip chip-amber">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Results in seconds
+      </span>
+      <span class="hero-chip chip-violet">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+        Grad-CAM · Saliency · LIME
+      </span>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section id="uploadSection" class="fade-in upload-panel">
+    <div class="upload-zone" id="uploadZone">
+      <div class="upload-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+      </div>
+      <p>Click or drag a chest X-ray image here</p>
+      <span>Frontal chest X-rays only &middot; JPG or PNG</span>
+      <em class="upload-pick">Choose file</em>
+    </div>
+    <input type="file" id="fileInput" accept="image/png, image/jpeg">
+    <div class="preview-row" id="previewRow">
+      <img id="previewImg" alt="Uploaded X-ray preview">
+      <span class="fname" id="fileName"></span>
+      <button id="analyzeBtn" type="button">Analyze image</button>
+    </div>
+    <div class="upload-error" id="uploadError" role="alert" style="display:none">
+      <div class="upload-error-icon" aria-hidden="true">!</div>
+      <div>
+        <strong id="uploadErrorTitle">This image can't be analysed</strong>
+        <p id="uploadErrorText"></p>
+        <p class="upload-error-hint">RespiTrust analyses frontal chest X-rays only. Please choose a chest X-ray image (JPG or PNG) and try again.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="card loading-box" id="loadingBox">
+    <div class="spinner"></div>
+    <p>Analyzing X-ray…</p>
+  </div>
+
+  <section id="resultSection" class="fade-in">
+    <h2>Prediction result</h2>
+    <div class="result-card" id="resultCard">
+      <div class="result-top">
+        <div class="result-heading">
+          <div class="result-icon" id="resultIcon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+          </div>
+          <div>
+            <p class="result-label">Prediction</p>
+            <p class="result-prediction" id="predictionLabel">—</p>
+          </div>
+        </div>
+        <div class="result-confidence">
+          <div class="num" id="confidenceNum">—</div>
+          <div class="lbl">confidence</div>
+        </div>
+      </div>
+    </div>
+    <p class="history-save-note" id="historySaveNote"></p>
+
+    <div class="card explain-card" style="margin-top:20px;">
+      <h2>What this means</h2>
+      <p class="plain-explanation" id="plainExplanation">—</p>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h2 style="margin-bottom:18px;">Probability breakdown</h2>
+      <div class="prob-row">
+        <div class="prob-head"><span>Bacterial pneumonia</span><span id="pctBacteria">0%</span></div>
+        <div class="prob-bar"><div class="prob-fill bacteria" id="barBacteria"></div></div>
+      </div>
+      <div class="prob-row">
+        <div class="prob-head"><span>Normal</span><span id="pctNormal">0%</span></div>
+        <div class="prob-bar"><div class="prob-fill normal" id="barNormal"></div></div>
+      </div>
+      <div class="prob-row">
+        <div class="prob-head"><span>Viral pneumonia</span><span id="pctVirus">0%</span></div>
+        <div class="prob-bar"><div class="prob-fill virus" id="barVirus"></div></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <h2>Explainability</h2>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="gradcam">Grad-CAM</button>
+        <button class="tab-btn" data-tab="saliency">Saliency map</button>
+        <button class="tab-btn" data-tab="lime">LIME</button>
+      </div>
+      <div class="xai-images">
+        <div class="xai-panel active" id="panel-gradcam">
+          <canvas id="canvas-gradcam" width="400" height="400"></canvas>
+          <p class="xai-caption">Highlights the lung regions that most influenced the model's prediction, warmer areas mattered more.</p>
+        </div>
+        <div class="xai-panel" id="panel-saliency">
+          <canvas id="canvas-saliency" width="400" height="400"></canvas>
+          <p class="xai-caption">Shows pixel-level gradients — brighter points are areas the model was most sensitive to.</p>
+        </div>
+        <div class="xai-panel" id="panel-lime">
+          <canvas id="canvas-lime" width="400" height="400"></canvas>
+          <p class="xai-caption">Outlines the image superpixels that contributed positively to the predicted class.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="region-box" style="margin-top:20px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/>
+      </svg>
+      <p><strong>Region of concern</strong><span id="regionText">Model focused on the lower-left lung field.</span></p>
+    </div>
+  </section>
+
+</main>
+
+</div>
+
+
+<div id="historyScreen" style="display:none;">
+  <nav class="landing-nav">
+    <div class="container nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.jpg" alt="RespiTrust logo">
+        <span>RespiTrust</span>
+      </div>
+      <div class="nav-links">
+        <a href="#" id="historyNavHomeBtn">Upload</a>
+        <a href="#" id="historyNavHistoryBtn" class="nav-pill active">History</a>
+        <span class="app-nav-email" id="historyNavUserPhone"></span>
+        <button id="historyLogoutBtn" type="button" class="nav-cta-btn">Log out</button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero app-hero">
+    <div class="hero-dots"></div>
+    <div class="hero-glow hero-glow-a"></div>
+    <div class="hero-glow hero-glow-b"></div>
+    <div class="container app-hero-inner">
+      <span class="hero-eyebrow">Your account</span>
+      <h1>Test history &amp; condition trend</h1>
+      <p>Every scan you analyze is saved here, so you can see how the condition is changing over time.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>Condition trend</h2>
+    <div class="trend-banner" id="trendBanner">
+      <div class="trend-dot" id="trendDot"></div>
+      <div>
+        <p class="trend-headline" id="trendHeadline">Loading…</p>
+        <p class="trend-detail" id="trendDetail"></p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:32px;">Past tests</h2>
+    <div id="historyList" class="history-list">
+      <p class="history-empty" id="historyEmpty" style="display:none;">No tests yet — analyze an X-ray to start building history.</p>
+    </div>
+  </main>
+</div>
+
+<script src="js/logger.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/script.js"></script>
+<script src="js/extras.js"></script>
+<script src="js/voice.js"></script>
+<script src="js/usercases.js"></script>
+<script src="js/robot.js"></script>
+
+</body>
+</html>
