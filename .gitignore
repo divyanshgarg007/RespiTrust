@@ -18,3 +18,12 @@ backend/venv312/
 venv*/
 backend/venv*/
 site-packages/
+
+bacteria_images*/
+normal_images*/
+virus_images*/
+chest_split/
+*.zip
+venv312/
+backend/venv312/
+frontend/.vscode/
